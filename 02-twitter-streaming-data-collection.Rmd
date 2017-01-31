@@ -1,7 +1,7 @@
 ---
-title: "Scraping data from Twitter"
+title: "Scraping data from Twitter's Streaming API"
 author: "Pablo Barbera"
-date: "January 10, 2017"
+date: "January 31, 2017"
 output: html_document
 ---
 
@@ -37,7 +37,7 @@ Run the below line and go to the URL that appears on screen. Then, type the PIN 
 my_oauth$handshake(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl"))
 ```
 
-Now you can save oauth token for use in future sessions with smappR or streamR. Make sure you save it in a folder where this is the only file.
+Now you can save oauth token for use in future sessions with netdemR or streamR. Make sure you save it in a folder where this is the only file.
 
 ```{r, eval=FALSE}
 save(my_oauth, file="credentials/twitter-token-2.Rdata")
@@ -166,91 +166,5 @@ How many tweets mention Justin Bieber?
 ```{r}
 length(grep("bieber", tweets$text, ignore.case=TRUE))
 ```
-
-
-#### Collecting data from Twitter's REST API
-
-It is possible to download recent tweets, but only up those less than 7 days old, and in some cases not all of them. We will use the `smappR` package for this (and the other functions that scrape Twitter's REST API).
-
-```{r}
-#install.packages("devtools")
-library(devtools)
-#install_github("SMAPPNYU/smappR")
-library(smappR)
-
-searchTweets(q=c("karadžić", "karadzic", "Караџић"), 
-  filename="karadzic-tweets.json",
-  n=1000, until="2016-03-25", 
-  oauth_folder="~/git/icourts-workshop/02-social-media/credentials")
-
-tweets <- parseTweets("karadzic-tweets.json")
-```
-
-What are the most popular hashtags?
-```{r}
-library(stringr)
-ht <- str_extract_all(tweets$text, "#(\\d|\\w)+")
-ht <- unlist(ht)
-head(sort(table(ht), decreasing = TRUE))
-```
-
-You can check the documentation about the options for string search [here](https://dev.twitter.com/rest/public/search).
-
-This is how you would extract information from user profiles:
-
-```{r}
-ics <- c("IntlCrimCourt", "ICJ_org", "CorteIDH", "CIDH", "ComunidadAndina", 
-         "ECHR_Press", "ICTYnews", "SpecialCourt", "EACJCourt", 
-         "EUCourtPress", "CourUEPresse", "TPRMERCOSUR", "afchpr")
-users <- getUsersBatch(screen_names=ics,
-                       oauth_folder="credentials")
-str(users)
-```
-
-Which is the IC with the most followers?
-```{r}
-users[which.max(users$followers_count),]
-users$screen_name[which.max(users$followers_count)]
-```
-
-Download up to 3,200 recent tweets from a Twitter account:
-```{r}
-getTimeline(filename="ECHR-tweets.json", screen_name="ECHR_Press", 
-    n=1000, oauth_folder="credentials")
-```
-
-What are the most common hashtags?
-```{r}
-tweets <- parseTweets("ECHR-tweets.json")
-ht <- str_extract_all(tweets$text, "#(\\d|\\w)+")
-ht <- unlist(ht)
-head(sort(table(ht), decreasing = TRUE))
-```
-
-Download friends and followers:
-```{r}
-followers <- getFollowers("ICTYnews", 
-    oauth_folder="credentials")
-```
-
-What are the most common words that followers of the International Criminal Tribunal for the Former Yugoslavia use to describe themselves on Twitter?
-```{r, fig.height=6, fig.width=6}
-# taking a random sample of 1,000 accounts
-smp <- sample(followers, 1000) 
-# extract profile descriptions
-users <- getUsersBatch(ids=smp,
-    oauth_folder="credentials")
-# create table with frequency of word use
-library(quanteda)
-tw <- corpus(users$description[users$description!=""])
-dfm <- dfm(tw, ignoredFeatures=c(stopwords("english"), stopwords("spanish"),
-                                 "t.co", "https", "rt", "rts", "http"))
-wf <- tfidf(dfm)
-# create wordcloud
-par(mar=c(0,0,0,0))
-plot(wf, rot.per=0, scale=c(3, .50), max.words=100)
-
-```
-
 
 

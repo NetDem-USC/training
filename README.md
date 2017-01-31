@@ -7,7 +7,8 @@ This repository contains the materials used during the training sessions on soci
 
 ## List of materials
 
-January 10th: Collecting data from [Twitter](01-twitter-data-collection.Rmd) and [Facebook](02-facebook-data-collection.Rmd)
+January 10th: Collecting data from [Facebook](01-facebook-data-collection.Rmd)
+January 31st: Collecting data from [Twitter's Streaming API](02-twitter-streaming-data-collection.Rmd) and [Twitter's REST API](02-twitter-REST-data-collection.Rmd). See also [slides](05-twitter-data-slides.pdf)
 
 ### Instructions for using training materials on GitHub ###
 

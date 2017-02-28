@@ -100,12 +100,12 @@ analyze_community <- function(ids){
   message(length(ids), " users in this community")
   message(round(length(ids)/length(V(gu)$id)*100), " % of all users")
   # most common hashtags / words
-  # corpus <- corpus(tweets$text[tweets$UserId %in% ids])
-  # dfm <- dfm(corpus, verbose=FALSE, ignoredFeatures=c(
-  #   stopwords("english"), stopwords("spanish"), stopwords("french"), 
-  #   "t.co", "https", "rt", "amp", "http", "t.c", "can", "v", "will", "via"))
-  # topf <- topfeatures(dfm, 15)
-  # print(paste(names(topf), collapse=", "))
+  corpus <- corpus(tweets$text[tweets$UserId %in% ids])
+  dfm <- dfm(corpus, verbose=FALSE, ignoredFeatures=c(
+    stopwords("english"), stopwords("spanish"), stopwords("french"), 
+    "t.co", "https", "rt", "amp", "http", "t.c", "can", "v", "will", "via"))
+  topf <- topfeatures(dfm, 15)
+  print(paste(names(topf), collapse=", "))
   # most common language
   message("Most common language:")
   print(tail(round(prop.table(sort(table(tweets$lang[tweets$UserId %in% ids]))), 2)))

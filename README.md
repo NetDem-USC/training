@@ -8,7 +8,10 @@ This repository contains the materials used during the training sessions on soci
 ## List of materials
 
 January 10th: Collecting data from [Facebook](01-facebook-data-collection.Rmd)
+
 January 31st: Collecting data from [Twitter's Streaming API](02-twitter-streaming-data-collection.Rmd) and [Twitter's REST API](02-twitter-REST-data-collection.Rmd). See also [slides](05-twitter-data-slides.pdf)
+
+February 27th: Introduction to [Social Network Analysis](06-networks-intro-visualization.Rmd) and [descriptive analysis of network data](07-networks-descriptive-analysis.Rmd), with an application to the [study of online communities discussing international law](08-networks-research-example.r). See also [slides](05-sna-slides.pdf)
 
 ### Instructions for using training materials on GitHub ###
 

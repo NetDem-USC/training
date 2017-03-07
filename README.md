@@ -13,6 +13,11 @@ January 31st: Collecting data from [Twitter's Streaming API](02-twitter-streamin
 
 February 27th: Introduction to [Social Network Analysis](06-networks-intro-visualization.Rmd) and [descriptive analysis of network data](07-networks-descriptive-analysis.Rmd), with an application to the [study of online communities discussing international law](08-networks-research-example.r). See also [slides](05-sna-slides.pdf)
 
+March 7th: Introduction to Text Analysis: [text manipulation](10-text-intro.Rmd), [dictionary methods](11-dictionaries.Rmd), [supervised learning](12-supervised-learning). See also [slides](09-text-slides.pdf)
+
+Note: some of content of these tutorials is based on materials prepared by [Dan Cervone](http://dcervone.com/), [Alex Hanna](http://alex-hanna.com), [Ken Benoit](http://www.kenbenoit.net/), [Paul Nulty](https://github.com/pnulty), [Kevin Munger](https://github.com/kmunger), [Evelina Gabasova](http://evelinag.com/), [Katherine Ognyanova](http://kateto.net/), and [Justin Grimmer](http://www.justingrimmer.org/).)
+
+
 ### Instructions for using training materials on GitHub ###
 
 You have three options for downloading the materials in this repository:  

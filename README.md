@@ -15,7 +15,9 @@ February 27th: Introduction to [Social Network Analysis](06-networks-intro-visua
 
 March 7th: Introduction to Text Analysis: [text manipulation](10-text-intro.Rmd) and [dictionary methods](11-dictionaries.Rmd). See also [slides](09-text-slides.pdf)
 
-April 18th: Supervised Machine Learning Aplied to Text Classification. [Materials here](12-supervised-learning).
+April 18th: Supervised Machine Learning Aplied to Text Classification. [Materials here](12-supervised-learning.Rmd).
+
+May 2nd: Topic models. [Materials here](13-unsupervised-learning.Rmd). See also [slides](14-topic-models-slides.pdf).
 
 Note: some of content of these tutorials is based on materials prepared by [Dan Cervone](http://dcervone.com/), [Alex Hanna](http://alex-hanna.com), [Ken Benoit](http://www.kenbenoit.net/), [Paul Nulty](https://github.com/pnulty), [Kevin Munger](https://github.com/kmunger), [Evelina Gabasova](http://evelinag.com/), [Katherine Ognyanova](http://kateto.net/), and [Justin Grimmer](http://www.justingrimmer.org/).)
 
